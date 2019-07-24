@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../SearchBar/SearchBar.module.css';
 import PropTypes from 'prop-types';
+import styles from './SearchBar.module.css';
 
 const SearchBar = ({ onSearchMovies }) => {
   return (

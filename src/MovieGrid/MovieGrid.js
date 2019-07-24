@@ -1,14 +1,14 @@
 import React from 'react';
-import MovieCard from '../MovieCard/MovieCard';
-import styles from '../MovieGrid/MovieGrid.module.css';
 import PropTypes from 'prop-types';
+import MovieCard from '../MovieCard/MovieCard';
+import styles from './MovieGrid.module.css';
 
 const MovieGrid = ({ items }) => {
   return (
     <ul className={styles.movieGrid}>
       {items.map(item => (
         <li key={item.id}>
-          <MovieCard item={item} />
+          <MovieCard {...item} />
         </li>
       ))}
     </ul>
@@ -16,7 +16,13 @@ const MovieGrid = ({ items }) => {
 };
 
 MovieGrid.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      overview: PropTypes.string.isRequired,
+      posterUrl: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+    }).isRequired,
+  ).isRequired,
 };
 
 export default MovieGrid;
